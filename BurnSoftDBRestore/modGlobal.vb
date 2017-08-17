@@ -11,6 +11,9 @@ Module modGlobal
     Public AppABV As String
     Public DBLastLoc As String
     Public DoAutoBackup As Boolean
+    ''' <summary>
+    ''' Initialze the global vars with the settings form teh config file and if the switch for autp back up has been passed
+    ''' </summary>
     Public Sub SetINIT()
         AppName = System.Configuration.ConfigurationManager.AppSettings("AppName")
         MainAppName = System.Configuration.ConfigurationManager.AppSettings("MainAppName")
@@ -25,6 +28,14 @@ Module modGlobal
         Obj.DefaultRegPath = RegKey
         DBLastLoc = Obj.GetDBPath
     End Sub
+    ''' <summary>
+    ''' sort through the command switch to find the setting that you are looking for to see if it was
+    ''' passed or not.
+    ''' </summary>
+    ''' <param name="strLookFor"></param>
+    ''' <param name="strType"></param>
+    ''' <param name="DidExist"></param>
+    ''' <returns></returns>
     Public Function GetCommand(ByVal strLookFor As String, ByVal strType As String, Optional ByRef DidExist As Boolean = False) As String
         Dim sAns As String = ""
         DidExist = False
@@ -63,11 +74,20 @@ Module modGlobal
         End If
         Return LCase(sAns)
     End Function
+    ''' <summary>
+    ''' Generate a new name for the backup file
+    ''' </summary>
+    ''' <returns></returns>
     Public Function NewFileName() As String
         Dim sAns As String
         sAns = AppABV & "_" & Format(Now(), "yyyymmd") & "_" & Format(Now(), "hmmss") & ".bak"
         Return sAns
     End Function
+    ''' <summary>
+    ''' format the directory that was passed to see if it needs to add a back slash or not
+    ''' </summary>
+    ''' <param name="sValue"></param>
+    ''' <returns></returns>
     Public Function FormatDirectory(ByVal sValue As String) As String
         Dim sAns As String = sValue
         If Len(sValue) <> 0 Then

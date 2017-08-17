@@ -11,9 +11,9 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("BurnSoft DataBase Restore")> 
 <Assembly: AssemblyDescription("The BurnSoft DataBase Restore application restores the file that was backed up with the DBBackup application to the selected application.")> 
 <Assembly: AssemblyCompany("Burnsoft.net (BurnSoft)")> 
-<Assembly: AssemblyProduct("BurnSoft DataBase Restore")> 
-<Assembly: AssemblyCopyright("Copyright © BurnSoft 2007-2013")> 
-<Assembly: AssemblyTrademark("BurnSoft 1997-2013, www.burnsoft.net, www.burnsoft.org")> 
+<Assembly: AssemblyProduct("BurnSoft DataBase Restore")>
+<Assembly: AssemblyCopyright("Copyright © BurnSoft 2007-2017")>
+<Assembly: AssemblyTrademark("BurnSoft 1997-2017, www.burnsoft.net, www.burnsoft.org")>
 
 <Assembly: ComVisible(False)>
 

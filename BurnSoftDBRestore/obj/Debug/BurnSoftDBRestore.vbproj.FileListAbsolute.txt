@@ -6,3 +6,6 @@
 \\psf\Home\Documents\Visual Studio 2010\Projects\BurnSoftDBRestore\BurnSoftDBRestore\obj\Debug\DBRestore.frmMain.resources
 \\psf\Home\Documents\Visual Studio 2010\Projects\BurnSoftDBRestore\BurnSoftDBRestore\obj\Debug\DBRestore.Resources.resources
 \\psf\Home\Documents\Visual Studio 2010\Projects\BurnSoftDBRestore\BurnSoftDBRestore\obj\Debug\BurnSoftDBRestore.vbproj.GenerateResource.Cache
+C:\Users\burnsoft\Source\Repos\BurnSoftDBRestore\BurnSoftDBRestore\bin\Debug\DBRestore.exe.config
+C:\Users\burnsoft\Source\Repos\BurnSoftDBRestore\BurnSoftDBRestore\obj\Debug\DBRestore.exe
+C:\Users\burnsoft\Source\Repos\BurnSoftDBRestore\BurnSoftDBRestore\obj\Debug\DBRestore.pdb

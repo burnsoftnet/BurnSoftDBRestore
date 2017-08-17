@@ -57,6 +57,12 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7A8EC588D285191AC5FC7F2E2C6E784F539770C2</ManifestCertificateThumbprint>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -128,7 +134,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="DBRestore.exe.manifest.txt" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
