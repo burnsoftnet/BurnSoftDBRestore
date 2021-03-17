@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("The BurnSoft DataBase Restore application restores the file that was backed up with the DBBackup application to the selected application.")> 
 <Assembly: AssemblyCompany("Burnsoft.net (BurnSoft)")> 
 <Assembly: AssemblyProduct("BurnSoft DataBase Restore")>
-<Assembly: AssemblyCopyright("Copyright © BurnSoft 2007-2017")>
+<Assembly: AssemblyCopyright("Copyright © BurnSoft 2007-2021")>
 <Assembly: AssemblyTrademark("BurnSoft 1997-2017, www.burnsoft.net, www.burnsoft.org")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("4.10.456.*")> 
-<Assembly: AssemblyFileVersion("4.10.456.0")> 
+<Assembly: AssemblyVersion("4.11.0.*")> 
+<Assembly: AssemblyFileVersion("4.11.0.0")> 
