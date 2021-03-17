@@ -1,31 +1,35 @@
 Imports DBRestore.BurnSoft.GlobalClasses
 Imports Microsoft.VisualBasic.FileIO
-Imports Microsoft.Win32
-Public Class frmMain
+''' <summary>
+''' Class frmMain.
+''' Implements the <see cref="System.Windows.Forms.Form" />
+''' </summary>
+''' <seealso cref="System.Windows.Forms.Form" />
+Public Class FrmMain
     ''' <summary>
     ''' Copy the file form the source drive to the application data drive
     ''' </summary>
     Sub DoWinRestore()
         Try
             Dim sSource As String = FormatDirectory(lblPath.Text) & File1.SelectedItem.ToString
-            Dim sTo As String = DBLastLoc
-            Dim i As Long = 0
-            Dim ObjFS As New BsFileSystem
-            ObjFS.DeleteFile(sTo)
+            Dim sTo As String = DbLastLoc
+            Dim objFs As New BsFileSystem
+            objFs.DeleteFile(sTo)
             My.Computer.FileSystem.CopyFile(sSource, sTo, UIOption.OnlyErrorDialogs)
             MsgBox("Restore was Successful!", MsgBoxStyle.Information, "Datbase Restore")
-            Dim Obj As New BsRegistry
-            Obj.DefaultRegPath = RegKey
-            If chkRunApp.Checked Then i = Shell(Obj.GetApplicationPath & "\" & MainAppNameEXE, vbMaximizedFocus)
+            Dim obj As New BsRegistry
+            obj.DefaultRegPath = RegKey
+' ReSharper disable once UnusedVariable
+            If chkRunApp.Checked Then Dim i As Long = Shell(obj.GetApplicationPath & "\" & MainAppNameExe, vbMaximizedFocus)
             Application.Exit()
         Catch ex As Exception
-            Dim ObjFS As New BsFileSystem
+            Dim objFs As New BsFileSystem
             Dim strform As String = "frmMain"
             Dim strProcedure As String = "DoWinRestore"
             Dim sMessage As String = strform & "." & strProcedure & "::" & Err.Number & "::" & ex.Message.ToString()
-            ObjFS.LogFile(MyLogFile, sMessage)
+            objFs.LogFile(MyLogFile, sMessage)
             MsgBox("An Error has occured while attempting to restore your database." & Chr(10) & sMessage)
-            Me.Cursor = Cursors.Arrow
+            Cursor = Cursors.Arrow
             cmdImport.Enabled = True
         End Try
     End Sub
@@ -34,18 +38,18 @@ Public Class frmMain
     ''' </summary>
     Sub UpdateFileList()
         Try
-            Dim Obj As New BsRegistry
-            Dim LastFile As String
-            Obj.DefaultRegPath = RegKey
+            Dim obj As New BsRegistry
+            Dim lastFile As String
+            obj.DefaultRegPath = RegKey
             If Len(lblPath.Text) > 0 Then
                 File1.Path = FormatDirectory(lblPath.Text)
 
-                LastFile = Obj.GetLastBackupFile
-                Dim i As Long = 0
-                Dim CurFile As String = ""
+                lastFile = obj.GetLastBackupFile
+                Dim i As Long
+                Dim curFile As String 
                 For i = 0 To File1.Items.Count - 1
-                    CurFile = File1.Items(i)
-                    If CurFile = LastFile Then
+                    curFile = File1.Items(i)
+                    If curFile = lastFile Then
                         File1.SetSelected(i, True)
                         Exit For
                     End If
@@ -55,7 +59,7 @@ Public Class frmMain
                 Call SelectAFolder()
             End If
         Catch ex As Exception
-            Dim ObjFS As New BsFileSystem
+            Dim objFs As New BsFileSystem
             Dim strform As String = "UpdateFileList"
             Dim strProcedure As String = "Load"
             Dim sMessage As String = strform & "." & strProcedure & "::" & Err.Number & "::" & ex.Message.ToString()
@@ -63,7 +67,7 @@ Public Class frmMain
                 Case 68
                     Call SelectAFolder()
                 Case Else
-                    ObjFS.LogFile(MyLogFile, sMessage)
+                    objFs.LogFile(MyLogFile, sMessage)
             End Select
         End Try
     End Sub
@@ -73,20 +77,20 @@ Public Class frmMain
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        Call SetINIT()
+        Call SetInit()
         Try
-            Dim Obj As New BsRegistry
-            Obj.DefaultRegPath = RegKey
-            chkRunApp.Text = "Run " & MainAppName & " after restore."
+            Dim obj As New BsRegistry
+            obj.DefaultRegPath = RegKey
+            chkRunApp.Text = $"Run {MainAppName} after restore."
             chkRunApp.Checked = True
-            lblPath.Text = FormatDirectory(Obj.GetLastWorkingDir)
+            lblPath.Text = FormatDirectory(obj.GetLastWorkingDir)
             Call UpdateFileList()
         Catch ex As Exception
-            Dim ObjFS As New BsFileSystem
+            Dim objFs As New BsFileSystem
             Dim strform As String = "frmMain"
             Dim strProcedure As String = "Load"
             Dim sMessage As String = strform & "." & strProcedure & "::" & Err.Number & "::" & ex.Message.ToString()
-            ObjFS.LogFile(MyLogFile, sMessage)
+            objFs.LogFile(MyLogFile, sMessage)
         End Try
     End Sub
     ''' <summary>
@@ -124,9 +128,9 @@ Public Class frmMain
     ''' <param name="e"></param>
     Private Sub cmdImport_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdImport.Click
         cmdImport.Enabled = False
-        Me.Cursor = Cursors.WaitCursor
+        Cursor = Cursors.WaitCursor
         Call DoWinRestore()
-        Me.Cursor = Cursors.Arrow
+        Cursor = Cursors.Arrow
         cmdImport.Enabled = True
     End Sub
 End Class

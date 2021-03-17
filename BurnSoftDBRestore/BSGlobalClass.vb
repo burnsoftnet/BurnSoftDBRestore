@@ -114,7 +114,7 @@ Namespace BurnSoft.GlobalClasses
         ''' <returns>System.String.</returns>
         Public Function GetDbPath() As String
             Dim sAns As String
-            sAns = GetRegSubKeyValue(DefaultRegPath, "Database", DBName)
+            sAns = GetRegSubKeyValue(DefaultRegPath, "Database", DbName)
             Return sAns
         End Function
         ''' <summary>
