@@ -1,4 +1,6 @@
 Imports System.Configuration
+Imports DBRestore.BurnSoft.GlobalClasses
+
 Module modGlobal
     Public AppName As String
     Public MainAppName As String
@@ -15,18 +17,18 @@ Module modGlobal
     ''' Initialze the global vars with the settings form teh config file and if the switch for autp back up has been passed
     ''' </summary>
     Public Sub SetINIT()
-        AppName = System.Configuration.ConfigurationManager.AppSettings("AppName")
-        MainAppName = System.Configuration.ConfigurationManager.AppSettings("MainAppName")
-        MainAppNameEXE = System.Configuration.ConfigurationManager.AppSettings("MainAppNameEXE")
-        DBName = System.Configuration.ConfigurationManager.AppSettings("DBName")
-        RegKey = System.Configuration.ConfigurationManager.AppSettings("RegKey")
-        CheckProcess = CBool(System.Configuration.ConfigurationManager.AppSettings("CheckProcess"))
-        MyLogFile = System.Configuration.ConfigurationManager.AppSettings("LogFilename")
-        AppABV = System.Configuration.ConfigurationManager.AppSettings("AppABV")
+        AppName = ConfigurationManager.AppSettings("AppName")
+        MainAppName = ConfigurationManager.AppSettings("MainAppName")
+        MainAppNameEXE = ConfigurationManager.AppSettings("MainAppNameEXE")
+        DBName = ConfigurationManager.AppSettings("DBName")
+        RegKey = ConfigurationManager.AppSettings("RegKey")
+        CheckProcess = CBool(ConfigurationManager.AppSettings("CheckProcess"))
+        MyLogFile = ConfigurationManager.AppSettings("LogFilename")
+        AppABV = ConfigurationManager.AppSettings("AppABV")
         DoAutoBackup = GetCommand("auto", "Bool")
-        Dim Obj As New BurnSoft.GlobalClasses.BSRegistry
+        Dim Obj As New BsRegistry
         Obj.DefaultRegPath = RegKey
-        DBLastLoc = Obj.GetDBPath
+        DBLastLoc = Obj.GetDbPath
     End Sub
     ''' <summary>
     ''' sort through the command switch to find the setting that you are looking for to see if it was
@@ -49,7 +51,7 @@ Module modGlobal
             Case Else
                 sAns = ""
         End Select
-        Dim cmdLine() As String = System.Environment.GetCommandLineArgs
+        Dim cmdLine() As String = Environment.GetCommandLineArgs
         Dim i As Integer = 0
         Dim intCount As Integer = cmdLine.Length
         Dim strValue As String = ""

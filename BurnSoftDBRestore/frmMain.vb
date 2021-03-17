@@ -1,3 +1,5 @@
+Imports DBRestore.BurnSoft.GlobalClasses
+Imports Microsoft.VisualBasic.FileIO
 Imports Microsoft.Win32
 Public Class frmMain
     ''' <summary>
@@ -8,16 +10,16 @@ Public Class frmMain
             Dim sSource As String = FormatDirectory(lblPath.Text) & File1.SelectedItem.ToString
             Dim sTo As String = DBLastLoc
             Dim i As Long = 0
-            Dim ObjFS As New BurnSoft.GlobalClasses.BSFileSystem
+            Dim ObjFS As New BsFileSystem
             ObjFS.DeleteFile(sTo)
-            My.Computer.FileSystem.CopyFile(sSource, sTo, FileIO.UIOption.OnlyErrorDialogs)
+            My.Computer.FileSystem.CopyFile(sSource, sTo, UIOption.OnlyErrorDialogs)
             MsgBox("Restore was Successful!", MsgBoxStyle.Information, "Datbase Restore")
-            Dim Obj As New BurnSoft.GlobalClasses.BSRegistry
+            Dim Obj As New BsRegistry
             Obj.DefaultRegPath = RegKey
             If chkRunApp.Checked Then i = Shell(Obj.GetApplicationPath & "\" & MainAppNameEXE, vbMaximizedFocus)
-            Global.System.Windows.Forms.Application.Exit()
+            Application.Exit()
         Catch ex As Exception
-            Dim ObjFS As New BurnSoft.GlobalClasses.BSFileSystem
+            Dim ObjFS As New BsFileSystem
             Dim strform As String = "frmMain"
             Dim strProcedure As String = "DoWinRestore"
             Dim sMessage As String = strform & "." & strProcedure & "::" & Err.Number & "::" & ex.Message.ToString()
@@ -32,7 +34,7 @@ Public Class frmMain
     ''' </summary>
     Sub UpdateFileList()
         Try
-            Dim Obj As New BurnSoft.GlobalClasses.BSRegistry
+            Dim Obj As New BsRegistry
             Dim LastFile As String
             Obj.DefaultRegPath = RegKey
             If Len(lblPath.Text) > 0 Then
@@ -53,7 +55,7 @@ Public Class frmMain
                 Call SelectAFolder()
             End If
         Catch ex As Exception
-            Dim ObjFS As New BurnSoft.GlobalClasses.BSFileSystem
+            Dim ObjFS As New BsFileSystem
             Dim strform As String = "UpdateFileList"
             Dim strProcedure As String = "Load"
             Dim sMessage As String = strform & "." & strProcedure & "::" & Err.Number & "::" & ex.Message.ToString()
@@ -70,17 +72,17 @@ Public Class frmMain
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmMain_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Call SetINIT()
         Try
-            Dim Obj As New BurnSoft.GlobalClasses.BSRegistry
+            Dim Obj As New BsRegistry
             Obj.DefaultRegPath = RegKey
             chkRunApp.Text = "Run " & MainAppName & " after restore."
             chkRunApp.Checked = True
             lblPath.Text = FormatDirectory(Obj.GetLastWorkingDir)
             Call UpdateFileList()
         Catch ex As Exception
-            Dim ObjFS As New BurnSoft.GlobalClasses.BSFileSystem
+            Dim ObjFS As New BsFileSystem
             Dim strform As String = "frmMain"
             Dim strProcedure As String = "Load"
             Dim sMessage As String = strform & "." & strProcedure & "::" & Err.Number & "::" & ex.Message.ToString()
@@ -92,8 +94,8 @@ Public Class frmMain
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        Global.System.Windows.Forms.Application.Exit()
+    Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
+        Application.Exit()
     End Sub
     ''' <summary>
     ''' action to perform when the select path is clicked, or when there is not path to read on startup
@@ -112,7 +114,7 @@ Public Class frmMain
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub btnPath_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPath.Click
+    Private Sub btnPath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPath.Click
         Call SelectAFolder()
     End Sub
     ''' <summary>
@@ -120,7 +122,7 @@ Public Class frmMain
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub cmdImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImport.Click
+    Private Sub cmdImport_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdImport.Click
         cmdImport.Enabled = False
         Me.Cursor = Cursors.WaitCursor
         Call DoWinRestore()
