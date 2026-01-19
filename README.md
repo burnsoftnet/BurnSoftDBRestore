@@ -18,11 +18,16 @@ Example:
     <add key="AppABV" value="MGC" />
 </appSettings>
 ```
-  This will read the Local User Registry Key settings that are created by the My Gun Collection or My Loaders Log Application.  Just put in the Path to those application in the **RegKey** settings for it to read the value of were the database is located at.  
+
+This will read the Local User Registry Key settings that are created by the My Gun Collection or My Loaders Log Application.  Just put in the Path to those application in the **RegKey** settings for it to read the value of were the database is located at.  
   
-  The **MainAppName** will be the title of the application, while the **DBName** will also have to be changed to match the database that you are wanting to copy/restore.
+The **MainAppName** will be the title of the application, while the **DBName** will also have to be changed to match the database that you are wanting to copy/restore.
   
-  ## Release Log
+## Release Log
+
+### v4.12.2.11
+
+* Updated to use .Net framework v4.8.1
 
 ### v4.11.1.10
 
