@@ -29,8 +29,8 @@
 		<file src="icon.png" target="" />
 		<file src="bin/$configuration$/DBRestore.exe.config" target="content/DBRestore.exe.config" />
 		<file src="bin/$configuration$/DBRestore.exe" target="content/DBRestore.exe" />
-		<file src="bin/$configuration$/DBRestore.exe.config" target="lib/net472/" />
-		<file src="bin/$configuration$/DBRestore.exe" target="lib/net472/" />
-		<file src="bin/$configuration$/stdole.dll" target="lib/net472/" />
+		<file src="bin/$configuration$/DBRestore.exe.config" target="lib/net481/" />
+		<file src="bin/$configuration$/DBRestore.exe" target="lib/net481/" />
+		<file src="bin/$configuration$/stdole.dll" target="lib/net481/" />
 	</files>
 </package>
