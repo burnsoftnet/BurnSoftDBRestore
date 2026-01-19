@@ -19,3 +19,4 @@ CVS
 BurnSoftDBRestore/bin/
 BurnSoftDBRestore/obj/
 .vs/
+*.nupkg
