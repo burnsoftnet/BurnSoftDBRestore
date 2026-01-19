@@ -128,6 +128,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BurnSoftDBRestore.nuspec" />
     <None Include="Resources\database_restore_72_x_72.ico" />
     <None Include="Resources\database_restore_Multi-16-72.ico" />
     <None Include="Resources\database_restore_16_x_16.ico" />
