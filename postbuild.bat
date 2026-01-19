@@ -1,17 +1,17 @@
 @echo off
 REM ******************************************************
-REM * VS Buid Script when using GhostScript for chm file *
+REM * VS Build Script when using GhostScript for chm file *
 REM * and building nuget packages from Solution 	 *
 REM ******************************************************
 REM ******************************************************
 REM USE Build Script below for Solution and upload to local server
-REM $(SolutionDir)postbuild.bat $(SolutionDir) $(ProjectDir) $(ConfigurationName) $(ProjectName)
+REM $(SolutionDir)postbuild.bat $(SolutionDir) $(ProjectDir) $(ConfigurationName) $(ProjectName) -l
 REM
 REM USE Build Script below for Solution and upload to GitHub
 REM $(SolutionDir)postbuild.bat $(SolutionDir) $(ProjectDir) $(ConfigurationName) $(ProjectName) -g
 REM 
 REM USE Build Script below for Project Only and upload to local server
-REM $(ProjectDir)postbuild.bat $(SolutionDir) $(ProjectDir) $(ConfigurationName) $(ProjectName)
+REM $(ProjectDir)postbuild.bat $(SolutionDir) $(ProjectDir) $(ConfigurationName) $(ProjectName) -l
 REM 
 REM USE Build Script below for Project Only and upload to GitHub
 REM $(ProjectDir)postbuild.bat $(SolutionDir) $(ProjectDir) $(ConfigurationName) $(ProjectName) -g
@@ -25,9 +25,7 @@ SET DEBUG="Debug"
 SET RELEASE="Release"
 SET NUGETEXT=nupkg
 SET USENUGETSERVER=""
-cd "%ProjectDir%"
-copy /Y "%SolutionDir%Help\%HELPFILENAME%.chm" "%ProjectDir%bin\%ConfigurationName%\%HELPFILENAME%.chm"
-cd "%ProjectDir%"
+
 del /Q %ProjectDir%*.nupkg
 SET LOCALNUGET=nuget.burnsoft.prod
 SET USENUGETSERVER="http://%LOCALNUGET%"

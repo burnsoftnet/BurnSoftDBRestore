@@ -4,14 +4,22 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="expression">MIT</license>
-    <!-- <icon>icon.png</icon> -->
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
-    <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>$copyright$</copyright>
-    <tags>Tag1 Tag2</tags>
+    <authors>burnsoftnet</authors>
+	<owners>burnsoftnet</owners>
+    <projectUrl>https://github.com/burnsoftnet/BurnSoftDBRestore.git</projectUrl>
+	<repository type="git" url="https://github.com/burnsoftnet/BurnSoftDBRestore.git" />
+	<iconUrl>https://avatars0.githubusercontent.com/u/24593581?s=460</iconUrl>
+	<icon>bswtsicon.png</icon>
+	<license type="expression">MIT</license>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<description>The BurnSoftDBRestore is the Main make up program that I use to copy the database from the selected drive to it's local destination.</description>
+	<releaseNotes>Initial Release.</releaseNotes>
+	<copyright>$copyright$</copyright>
+	<tags>burnsoft main, MyGunCollection MGC, MyLoadersLog, MLL, Database Restore, DBRESTORE</tags>
+	<files>
+		<file src="bswtsicon.png" target="" />
+		<file src="bin/$configuration$/DBRestore.exe.config" target="content/DBRestore.exe.config" />
+		<file src="bin/$configuration$/DBRestore.exe" target="content/DBRestore.exe" />
+  </files>
   </metadata>
 </package>
