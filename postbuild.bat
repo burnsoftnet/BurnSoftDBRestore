@@ -25,7 +25,7 @@ SET DEBUG="Debug"
 SET RELEASE="Release"
 SET NUGETEXT=nupkg
 SET USENUGETSERVER=""
-
+cd "%ProjectDir%"
 del /Q %ProjectDir%*.nupkg
 SET LOCALNUGET=nuget.burnsoft.prod
 SET USENUGETSERVER="http://%LOCALNUGET%"
